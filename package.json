@@ -1,18 +1,15 @@
 {
   "name": "finddups",
   "version": "1.0.4",
-  "description": "Find and interactively remove duplicate files and directories",
-  "author": "Jesse Schalken <me@jesseschalken.com>",
+  "description": "Typescript version of Jesse Schalken's finddups",
+  "contributors": [
+    "Jesse Schalken <me@jesseschalken.com>",
+    "John Shewchuk <johnshew@users.noreply.github.com>"
+  ],
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-syntax-class-properties": "^6.13.0",
-    "babel-plugin-syntax-flow": "^6.18.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
-    "flow-bin": "^0.57.3",
-    "prettier": "^1.7.4"
+    "@types/node": "^12.7.5",
+    "typescript": "^3.6.3"
   },
   "main": "index.js",
   "bin": {
@@ -20,14 +17,15 @@
   },
   "dependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jesseschalken/finddups.git"
+    "url": "git+https://github.com/johnshew/finddups.git"
   },
   "bugs": {
-    "url": "https://github.com/jesseschalken/finddups/issues"
+    "url": "https://github.com/johnshew/finddups/issues"
   },
-  "homepage": "https://github.com/jesseschalken/finddups#readme"
+  "homepage": "https://github.com/johnshew/finddups#readme"
 }
