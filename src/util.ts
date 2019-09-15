@@ -12,7 +12,7 @@ export function printLn(text: string = ''): Promise<void> {
 
 function print(text: string): Promise<void> {
   return new Promise((resolve, reject) => {
-    process.stdout.write(text, (err: mixed) => {
+    process.stdout.write(text, (err: any) => {
       err ? reject(err) : resolve();
     });
   });
@@ -88,9 +88,9 @@ export function newCid(): number {
 // noinspection JSUnusedGlobalSymbols
 export function groupBy<Tk, Tv>(
   items: Iterable<Tv>,
-  fn: Tv => Tk,
+  fn: (arg1: Tv) => Tk,
 ): Map<Tk, Tv[]> {
-  let map = new Map();
+  let map = new Map<Tk, Tv[]>();
   for (let item of items) {
     let key = fn(item);
     let arr = map.get(key);
@@ -127,8 +127,8 @@ export async function waitAll(
 }
 
 export interface PendingPromise<T> {
-  +resolve: T => void;
-  +reject: mixed => void;
+  readonly resolve: (v: T)=> void;
+  readonly reject: (err? : any) => void;
 }
 
 /**
@@ -167,7 +167,7 @@ export class AsyncCap {
 // noinspection JSUnusedGlobalSymbols
 export function partition<T>(
   items: Iterable<T>,
-  func: T => boolean,
+  func: (arg: T) => boolean,
 ): [T[], T[]] {
   let t = [];
   let f = [];
@@ -177,7 +177,7 @@ export function partition<T>(
   return [t, f];
 }
 
-export function sum<T>(items: Iterable<T>, func: T => number): number {
+export function sum<T>(items: Iterable<T>, func: (arg: T) => number): number {
   let ret = 0;
   for (let item of items) {
     ret += func(item);

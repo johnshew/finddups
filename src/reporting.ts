@@ -1,6 +1,4 @@
-// @flow
-
-import type {CompleteNode} from './reading';
+import  {CompleteNode} from './reading';
 import {formatBytes, formatNumber, printLn, sum} from './util';
 import * as readline from 'readline';
 import * as fs from './promise_fs';
@@ -29,8 +27,8 @@ function deepSize(node: CompleteNode): number {
 }
 
 function getDuplicateCids(roots: CompleteNode[]): Set<number> {
-  let one = new Set();
-  let many = new Set();
+  let one = new Set<number>();
+  let many = new Set<number>();
   roots.forEach(function visit({cid, children}) {
     if (one.has(cid)) {
       many.add(cid);
@@ -143,9 +141,9 @@ async function runReport(groups: CompleteNode[][]): Promise<void> {
 }
 
 interface ReadlineAction {
-  +key: string;
-  +name: string;
-  +action: () => Promise<void>;
+  readonly key: string;
+  readonly name: string;
+  readonly action: () => Promise<void>;
 }
 
 class Readline {
@@ -166,7 +164,7 @@ class Readline {
         question += `  ${key}: ${name}\n`;
       }
       question += '> ';
-      let response = await new Promise(resolve => {
+      let response = await new Promise<string>(resolve => {
         this.rl.question(question, answer => {
           resolve(answer);
         });

@@ -1,19 +1,13 @@
 #!/usr/bin/env node
-'use strict';
-
-var _scanning = require('./scanning');
-
-var _reading = require('./reading');
-
-var _reporting = require('./reporting');
-
+// @flow
+import { Path, scan } from './scanning';
+import { read } from './reading';
+import { report } from './reporting';
 async function main(argv) {
-  let paths = argv.slice(2).map(path => new _scanning.Path(path));
-  let roots = await (0, _reading.read)((await (0, _scanning.scan)(paths)));
-  await (0, _reporting.report)(roots);
+    let paths = argv.slice(2).map(path => new Path(path));
+    let roots = await read(await scan(paths));
+    await report(roots);
 }
-
 // noinspection JSIgnoredPromiseFromCall
-
 main(process.argv);
 //# sourceMappingURL=main.js.map

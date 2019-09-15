@@ -1,6 +1,6 @@
 // @flow
 
-import type {Node} from './scanning';
+import {Node} from './scanning';
 import {FileReader} from './file-reader';
 import * as fs from './promise_fs';
 import {FileType} from './scanning';
@@ -8,13 +8,13 @@ import {padString, newCid} from './util';
 import {isIgnored} from './ignore-rules';
 
 export interface CompleteNode extends Node {
-  +cid: number;
-  +children: $ReadOnlyArray<CompleteNode>;
+  readonly cid: number;
+  readonly children: Array<CompleteNode>;
 }
 
 interface PendingNode extends Node {
-  +cid: Promise<number>;
-  +children: $ReadOnlyArray<PendingNode>;
+  readonly cid: Promise<number>;
+  readonly children: Array<PendingNode>;
 }
 
 class StringCids {

@@ -54,10 +54,10 @@ export class Path {
 }
 
 export interface Node {
-  +type: FileType;
-  +path: Path;
-  +size: number;
-  +children: $ReadOnlyArray<Node>;
+  readonly type: FileType;
+  readonly path: Path;
+  readonly size: number;
+  readonly children: Array<Node>;
 }
 
 async function createNode(path: Path): Promise<Node> {
@@ -81,7 +81,7 @@ export async function scan(paths: Path[]): Promise<Node[]> {
   let size = 0;
   let count = 0;
   let roots = [];
-  function visit(node) {
+  function visit(node: Node) {
     count++;
     size += node.size;
     node.children.forEach(visit);

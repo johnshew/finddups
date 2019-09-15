@@ -1,5 +1,3 @@
-// @flow
-
 import {Path, Node} from './scanning';
 import * as fs from './promise_fs';
 import {Progress} from './progress';
@@ -13,11 +11,11 @@ import {
   trackProgress,
   waitAll,
 } from './util';
-import type {PendingPromise} from './util';
+import  {PendingPromise} from './util';
 
 interface PendingFile extends PendingPromise<number> {
-  +path: Path;
-  +size: number;
+  readonly path: Path;
+  readonly size: number;
 }
 
 export class FileReader {

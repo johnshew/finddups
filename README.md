@@ -1,3 +1,5 @@
+`finddups` is a port of Jesse Schalken's finddups project to Typescript.
+
 `finddups` is a command line tool to find and remove duplicate files and 
 directory trees for Windows, macOS and Linux. It aims to be as efficient as 
 possible, only reading as much of each file as required to determine if it is
@@ -59,8 +61,11 @@ Please select an option:
 
 ### Development
 
-`finddups` is a Node.js project using [Babel](https://babeljs.io/),
-[Flow](https://flow.org/) and [Prettier](https://prettier.io/) and has no 
-runtime dependencies. Sources are in `src/` and are compiled into `dist/` 
-with `babel src --out-dir dist --source-maps`. The main entry point is 
-`dist/main.js`.
+`finddups` is a Node.js project using Typescript.  
+
+It has no runtime dependencies. 
+
+Sources are in `src/` and are compiled into `dist/` 
+with `npm run build` or `npx tsc -p .`. 
+
+The main entry point is `dist/main.js`.

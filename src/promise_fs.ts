@@ -1,6 +1,6 @@
-//@flow
 
 import * as fs from 'fs';
+
 
 export type Stats = fs.Stats;
 
@@ -14,7 +14,7 @@ export function open(path: string, mode: string): Promise<number> {
 
 export async function read(fd: number, length: number): Promise<Buffer> {
   let buffer = Buffer.allocUnsafe(length);
-  let bytesRead = await new Promise((resolve, reject) => {
+  let bytesRead = await new Promise<number>((resolve, reject) => {
     fs.read(fd, buffer, 0, length, null, (err, bytesRead) => {
       err ? reject(err) : resolve(bytesRead);
     });
@@ -31,7 +31,7 @@ export function close(fd: number): Promise<void> {
 }
 
 export async function readlink(path: string): Promise<string> {
-  const buffer = new Promise((resolve, reject) => {
+  const buffer = new Promise<string>((resolve, reject) => {
     fs.readlink(path, (err, dest) => {
       err ? reject(err) : resolve(dest);
     });
@@ -57,7 +57,7 @@ export function stat(path: string): Promise<Stats> {
 }
 
 export async function readdir(path: string): Promise<string[]> {
-  const names = await new Promise((resolve, reject) => {
+  const names = await new Promise<string[]>((resolve, reject) => {
     fs.readdir(path, (err, names) => {
       err ? reject(err) : resolve(names);
     });

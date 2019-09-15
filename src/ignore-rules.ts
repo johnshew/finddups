@@ -1,4 +1,3 @@
-// @flow
 import {Node} from './scanning';
 
 // Most of this is copied from https://www.gitignore.io/api/linux%2Cmacos%2Cwindows
